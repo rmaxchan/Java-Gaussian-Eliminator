@@ -24,7 +24,9 @@ public class Matrix {
         matrix[row][col] = value;
     }
 
-    public int getRows() { return rows; }
+    public double[] getRow(int row) {
+        return matrix[row];
+    }
     public int getCols() { return cols; }
 
     public void swapRows(int r1, int r2) {
@@ -83,12 +85,12 @@ public class Matrix {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < rows; i++) {
-            sb.append("[ ");
+            sb.append("[\t");
             for (int j = 0; j < cols; j++) {
                 sb.append(String.format("%.4f", matrix[i][j]));
                 if (j < cols - 1) sb.append("\t");
             }
-            sb.append(" ]\n");
+            sb.append("\t]");
         }
         return sb.toString();
     }
