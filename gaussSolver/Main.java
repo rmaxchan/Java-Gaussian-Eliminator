@@ -10,5 +10,8 @@ public class Main {
         Matrix matrix = new Matrix(test);
         System.out.println("Matrix:");
         System.out.println(matrix);
+
+        matrix.toReducedRowEchelonForm();
+        System.out.println("New matrix:\n" + matrix);
     }
 }
