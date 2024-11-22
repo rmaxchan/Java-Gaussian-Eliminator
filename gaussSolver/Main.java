@@ -45,6 +45,15 @@ public class Main {
         printPretty("");
         matrix.toReducedRowEchelonForm();
         System.out.println(matrix);
+        printPretty("");
+        for (int i = 0; i < matrix.getRowsNum(); i++) {
+            for (int j = 0; j < matrix.getColsNum(); j++) {
+                if (j == (matrix.getColsNum() - 1)) {
+                    printPretty("The value of X"+i+" is: "+matrix.getValue(i,j));
+                }
+            }
+        }
+        printPretty("");
     }
 
     private static void printPretty(String message) {

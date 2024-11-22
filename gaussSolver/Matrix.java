@@ -27,7 +27,11 @@ public class Matrix {
     public double[] getRow(int row) {
         return matrix[row];
     }
-    public int getCols() { return cols; }
+    public double getValue(int row, int col) {
+        return matrix[row][col];
+    }
+    public int getRowsNum() { return rows; }
+    public int getColsNum() { return cols; }
 
     public void swapRows(int r1, int r2) {
         double[] temp = matrix[r1];
@@ -37,9 +41,9 @@ public class Matrix {
 
     public void toReducedRowEchelonForm() {
         int currCol = 0;
-        int currRow = 0;
-        int tempRow = 0;
-        int tempCol = 0;
+        int currRow;
+        int tempRow;
+        int tempCol;
 
         //check the elements
         for (currRow = 0; currRow < rows; currRow++) {
