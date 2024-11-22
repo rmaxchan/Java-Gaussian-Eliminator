@@ -66,6 +66,9 @@ public class Matrix {
             double pivot = matrix[currRow][currCol];
             for (tempCol = 0; tempCol < cols; tempCol++) {
                 matrix[currRow][tempCol] /= pivot;
+                if (matrix[currRow][tempCol] == -0) {
+                    matrix[currRow][tempCol] = 0; //remove unnecessary negative sign on zeros
+                }
             }
 
             //process the other non-zero elements to comply with reduced Row Echelon standards
@@ -74,6 +77,9 @@ public class Matrix {
                     double c = matrix[tempRow][currCol];//get the value of c as the factor
                     for (tempCol = 0; tempCol < cols; tempCol++) {
                         matrix[tempRow][tempCol] -= c * matrix[currRow][tempCol]; //apply Addition of Scalar Multiples (using 'c' as coefficient in Rn + cRm -> Rn)
+                        if (matrix[tempRow][tempCol] == -0) {
+                            matrix[tempRow][tempCol] = 0; //remove unnecessary negative sign on zeros
+                        }
                     }
                 }
             }
@@ -90,7 +96,7 @@ public class Matrix {
                 sb.append(String.format("%.4f", matrix[i][j]));
                 if (j < cols - 1) sb.append("\t");
             }
-            sb.append("\t]");
+            sb.append("\t]\n");
         }
         return sb.toString();
     }

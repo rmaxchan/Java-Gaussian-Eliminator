@@ -4,10 +4,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner kbd = new Scanner(System.in);
-        //to-do: menu in terminal
-        //  1. ask how many linear equations
-        //  2. ask how many unknown variables
-        //  3. print out a matrix with the given data
         printPretty("");
         printPretty("Welcome to the Gauss-Jordan Elimination processor!");
         printPretty("How many linear equations would you like to process?");
@@ -20,7 +16,7 @@ public class Main {
         printPretty("");
         int varNum = kbd.nextInt();
 
-        Matrix matrix = new Matrix(eqNum, varNum);
+        Matrix matrix = new Matrix(eqNum, varNum+1);
 
         printPretty("");
         printPretty(eqNum+" equations and "+varNum+" variables...");
@@ -32,6 +28,11 @@ public class Main {
                 printPretty("What is the coefficient for X"+(j+1));
                 value = kbd.nextDouble();
                 matrix.setMatrix(i, j, value);
+                if (j+1 == varNum) {
+                    printPretty("What is the end constant?");
+                    value = kbd.nextDouble();
+                    matrix.setMatrix(i, j+1, value);
+                }
             }
             printPretty("");
         }
@@ -43,20 +44,7 @@ public class Main {
         printPretty("Its Reduced Row Echelon Form is:");
         printPretty("");
         matrix.toReducedRowEchelonForm();
-        System.out.println(matrix);;
-
-//        double[][] test = {
-//                {1, 1, -1, -3},
-//                {6, 2, 2, 2},
-//                {-3, 4, 1, 1}
-//        };
-//
-//        Matrix matrix = new Matrix(test);
-//        System.out.println("Matrix:");
-//        System.out.println(matrix);
-//
-//        matrix.toReducedRowEchelonForm();
-//        System.out.println("New matrix:\n" + matrix);
+        System.out.println(matrix);
     }
 
     private static void printPretty(String message) {
